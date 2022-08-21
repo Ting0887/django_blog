@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    background: url('/static/img/background.jpg');
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+ul#menu{
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+ul#menu li{
+    display: inline-block;
+}
+
+ul#menu a:hover{
+    background-color: aqua;
+    color: black;
+}
+
+#menu{
+    overflow: hidden;
+    background-color: #333;
+}
+
+#menu a{
+    float: left;
+    padding: 15px 16px;
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+p a.btn{
+    height: 20px;
+    width: 80px;
+    text-align: center;
+}
+
+.btn{
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    border: thin solid gray;
+    height: 20px;
+    width: 50px;
+    padding: 0%;
+    background: linear-gradient(#f7f7f7, #dedede);
+}
+
+input[type=text]{
+    padding: 0.4em;
+}
+
+/* Messages */
+.success, .error{
+    padding: 1em 0 lem 3em;
+}
+.success{
+    background-color: darkgreen;
+    width: 250px;
+}
+
+.error{
+    background-color:crimson;
+    width: 250px;
+}
+
+.inlineBlock{
+    display: block;
+}

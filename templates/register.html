@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block heading %}註冊{% endblock %}
+{% block content %}
+    <div class="register">
+        <form method='POST' action="{% url 'account:register' %}">
+            {% csrf_token %}
+            <table>
+            {{ userForm.as_p }}
+            </table>
+            <input class="btn" type="submit" value="送出">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block heading %}文章內容{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/article.css' %}">
+<div class="container">
+    <h3 class="inlineBlock">{{ article.title }}</h3>
+        {% if user.is_superuser %}
+            <a class="btn inlineBlock" href="{% url 'articleUpdate' article.id %}">修改</a>
+        {% endif %}
+            <p>發表時間 : {{ article.pubDateTime }}</p>
+        <div class="articleContent">
+            {{ article.content }}
+        </div>
+            <p class='like'>
+                <img id="like" src="{% static 'img/like.png' %}" alt="like">{{ article.likes.count }}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'articleLike' article.id %}">讚</a>
+                {% endif %}
+            </p>
+        {% for comment in comments %}
+            <div class="usercomment">
+                <span class="commentAuthor">
+                    {{ comment.user.fullName }}
+                </span>
+            {% if comment.user != user %}
+                <span class="comment">
+                    {{ comment.content }}
+                </span>
+            {% else %}
+                <form class="inlineBlock" method="POST" action="{% url 'commentUpdate' comment.id %}">
+                    {% csrf_token %}
+                    <input type="text" name="comment" value="{{ comment.content }}"></input>
+                    <input class="btn" type="submit" value="修改">
+                </form>
+                <form class="inlineBlock" method="POST" action="{% url 'commentDelete' comment.id %}">
+                    {% csrf_token %}
+                    <input class="btn deleteConfirm" type="submit" value="刪除">
+                </form>
+            {% endif %}
+                <span class="commentTime">
+                    {{ comment.pubDateTime }}
+                </span>
+            </div>
+                </br>
+        {% endfor %}
+        {% if user.is_authenticated %}
+        <br>
+        <form method='POST' action="{% url 'commentCreate' article.id %}">
+            {% csrf_token %}
+            <input type="text" name="comment" placeholder="留言...">
+            <input class="btn" type="submit" value="送出">
+        </form>
+        <br>
+        {% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/deleteConfirm.js' %}"></script>
+{% endblock %}

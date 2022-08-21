@@ -1,0 +1,6 @@
+<div class="searchbar">
+    <form class="inlineBlock" action="{% url 'articleSearch' %}">
+        <input type="text" name="searchTerm" {% if SearchTerm %} value="{{ searchTerm }}" {% endif %}>
+        <input class="btn" type="submit" value="search">
+    </form>
+</div>

@@ -1,0 +1,80 @@
+div.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+.searchbar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 235px;
+}
+
+.createArticle p{
+    text-align: center;
+}
+
+.articleContent{
+    background-color: darkorange;
+    border: thin solid gray;
+    border-radius: 10px;
+    width: 450px;
+}
+
+.table-hover tr:hover td{
+    background-color: blue;
+}
+
+.table th{
+    font-size: 1.1em;
+    padding: 10px 0 10px 10px;
+    text-align: left;
+    background-color: #468cb1;
+    border-bottom: 1px solid black;
+}
+
+.table td{
+    color: black;
+    background-color: #e0e0e0;
+    padding: 12px 0 12px 10px;
+}
+
+.table-strip tr:nth-child(even) td{
+    background-color: #E1F9DC;
+}
+
+.like{
+    font-weight: bold;
+    color: #3e7bd1;
+}
+
+img#like{
+    vertical-align: middle;
+    width: 0.5cm;
+    height: 0.5cm;
+}
+
+div.Allcomment{
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+}
+
+.usercomment, .commentAuthor{
+    font-size: 0.7cm;
+}
+
+.commentAuthor{
+    font-weight: bold;
+    color: #186caf;
+    font-size: 20px;
+}
+
+.commentTime{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.comment{
+    font-size: 20px;
+}

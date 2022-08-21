@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block heading %}
+    查詢結果
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+{% endblock %}
+{% block content %}
+    {% include 'searchForm.html' %}
+    <hr>
+    {% if not articles %}
+        <p>查無資料</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>標題</th>
+                <th>發表時間</th>
+            </tr>
+            {% for article in articles %}
+            <tr>
+                <td>
+                    <a href="{% url 'articleRead' article.id %}">{{ article.title }}</a>
+                </td>
+                <td>{{ article.pubDateTime }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}
