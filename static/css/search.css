@@ -1,0 +1,40 @@
+.searchbar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 235px;
+}
+
+.Search-results{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.table-hover tr:hover td a{
+    color: blue;
+}
+
+.table-hover th{
+    font-size: 1.1em;
+    padding: 10px 0 10px 10px;
+    text-align: center;
+    background-color: #468cb1;
+    border-bottom: 1px solid black;
+}
+
+.table-hover td{
+    color: black;
+    background-color: #e0e0e0;
+    padding: 12px 0 12px 10px;
+    text-align: center;
+}
+
+.table-hover td a{
+    text-align: center;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}

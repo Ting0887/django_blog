@@ -1,5 +1,7 @@
+{% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<ul class="topnav" id="menu">
+<link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+<ul id="menu">
     <li>
         <a href="{% url 'main' %}">首頁</a>
     </li>
@@ -7,13 +9,18 @@
         <a href="{% url 'about' %}">關於</a>
     </li>
     <li>
-        <a href="{% url 'article' %}">我的文章</a>
+        <a href="{% url 'article' %}">文章列表</a>
     </li>
     {% if user.is_authenticated %}
-    <li class="dropdown">
-        <a class="dropbtn">{{ user.username }}</a>
-        <ul class="dropdown-content">
-            <a href="{% url 'account:logout' %}">登出 {{user.username }}</a>
+    <li>
+        <a>{{ user.username }}</a>
+        <ul>
+            <li>
+                <a href="{% url 'account:profile' user.id %}">個人資料</a>
+            </li>
+            <li>
+                <a href="{% url 'account:logout' %}">登出</a>
+            </li>
         </ul>
     </li>
     {% else %}

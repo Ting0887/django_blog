@@ -84,7 +84,6 @@ def commentCreate(request, articleId):
     if request.method == 'GET':
         return articleRead(request, articleId)
     comment = request.POST.get('comment')
-    print(comment)
     if comment:
         comment = comment.strip()
     if not comment:

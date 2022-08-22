@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block heading %}
-    查詢結果
-{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/article.css' %}">
-{% endblock %}
+{% block heading %}查詢結果{% endblock %}
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
     {% include 'searchForm.html' %}
     <hr>
     {% if not articles %}
+    <div class="Search-results">
         <p>查無資料</p>
+    </div>
     {% else %}
-        <table>
+        <table class="table-hover">
             <tr>
                 <th>標題</th>
                 <th>發表時間</th>

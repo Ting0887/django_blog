@@ -1,3 +1,4 @@
+from msilib.schema import Class
 from django import forms
 from account.models import User
 
@@ -24,4 +25,10 @@ class UserForm(forms.ModelForm):
         user.set_password(user.password)
         user.save()
         return user
-            
+
+class ProfileForm(forms.Form):
+    username = forms.CharField(label='帳號')
+    email = forms.EmailField(label='電子信箱', max_length=128)
+    website = forms.URLField(label='個人網址', max_length=128)
+    address = forms.CharField(label='地址', max_length=128)
+    

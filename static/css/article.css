@@ -4,12 +4,6 @@ div.container{
     width: 500px;
 }
 
-.searchbar{
-    margin-left: auto;
-    margin-right: auto;
-    width: 235px;
-}
-
 .createArticle p{
     text-align: center;
 }
@@ -28,28 +22,6 @@ div.container{
     border: thin solid gray;
     border-radius: 10px;
     width: 450px;
-}
-
-.table-hover tr:hover td{
-    background-color: blue;
-}
-
-.table th{
-    font-size: 1.1em;
-    padding: 10px 0 10px 10px;
-    text-align: left;
-    background-color: #468cb1;
-    border-bottom: 1px solid black;
-}
-
-.table td{
-    color: black;
-    background-color: #e0e0e0;
-    padding: 12px 0 12px 10px;
-}
-
-.table-strip tr:nth-child(even) td{
-    background-color: #E1F9DC;
 }
 
 .like{

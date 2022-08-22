@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block heading %}個人資料{% endblock %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/information.css' %}">
+    <a class="btn" href="{% url 'account:profileUpdate' user.id %}">編輯</a>
+    <div class="information">
+        <table class="user">
+            <tr>
+                <td>姓名</td>
+                <td>{{ user.fullName }}<td>
+            </tr>
+            <tr>
+                <td>電子信箱</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>個人網站</td>
+                <td>{{ user.website }}</td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td>{{ user.address }}</td>
+            </tr>
+            <tr>
+                <td>帳號註冊日期</td>
+                <td>{{ user.date_joined }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

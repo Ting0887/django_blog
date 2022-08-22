@@ -1,9 +1,12 @@
+from ast import Return
+from cProfile import Profile
 from email import message
 from functools import reduce
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
 from django.urls.base import reverse
-from account.forms import UserForm
+from account.forms import UserForm, ProfileForm
+from account.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -59,3 +62,30 @@ def admin_required(func):
             return redirect(reverse('account:login') +  '?next=' + request.get_full_path())
         return func(request, *args, **kwargs)
     return auth
+
+@login_required
+def profile(request, id):
+    user = get_object_or_404(User, id=id)
+    if request.method == 'GET':
+        return render(request,'profile.html',{'user':user})
+
+@login_required
+def profileUpdate(request, id):
+    user = get_object_or_404(User, id=id)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST)
+        print(form)
+        if form.is_valid:
+            user.fullName = form.cleaned_data['username']
+            user.email = form.cleaned_data['email']
+            user.website = form.cleaned_data['website']
+            user.address = form.cleaned_data['address']
+            user.save()
+            return redirect(f'/account/profile/{user.id}/')
+    else:
+        original_data = {'username': user.fullName,
+                         'email': user.email,
+                         'website': user.website,
+                         'address': user.address}
+        form = ProfileForm(original_data)
+    return render(request,'profileUpdate.html',{'form':form,'user':user})

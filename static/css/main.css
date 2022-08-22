@@ -7,54 +7,7 @@ body{
 
 h1{
     text-align: center;
-}
-
-ul#menu{
-    margin-bottom: 20px;
-    text-align: right;
-}
-
-ul#menu li{
-    display: inline-block;
-}
-
-ul#menu a:hover{
-    background-color: aqua;
-    color: black;
-}
-
-#menu{
-    overflow: hidden;
-    background-color: #333;
-}
-
-#menu a{
-    float: left;
-    padding: 15px 16px;
-    color: #f2f2f2;
-    text-decoration: none;
-}
-
-.dropdown:hover .dropdown-content{
-    display: block;
-}
-
-.dropdown-content a {
-    color: #f2f2f2;
-    text-decoration: none;
-}
-
-.dropdown{
-    display: inline-block;
-  }
-  
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    padding-top: 5%;
 }
 
 p a.btn{
