@@ -29,7 +29,7 @@ def login(request):
         return render(request, 'login.html', {'nextURL':request.GET.get('next')})
     username = request.POST.get('username')
     password = request.POST.get('password')
-    print(username, password)
+
     if not username or not password:
         messages.error(request, '請輸入資料')
         return render(request, 'login.html')

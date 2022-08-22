@@ -15,9 +15,9 @@
     {% for article, comments in articles.items %}
         <div class="container">
             <div class="article">
-                <h3>
+                <h2 class="title">
                     <a href="{% url 'articleRead' article.id %}">{{ article.title }}</a>
-                </h3>
+                </h2>
                 {% if user.is_superuser %}
                     <form class="inlineBlock"  method="POST" action="{% url 'articleDelete' article.id %}">
                         {% csrf_token %}
@@ -30,7 +30,7 @@
                     {{ article.content|linebreaks|truncatechars_html:30 }}
                 </div>
                 <p class="like">
-                    <img id="like" src="{% static 'img/like.png' %}" alt="Like">{{ article.likes.count }} 讚
+                    <img id="like" src="{% static 'img/like.png' %}" alt="Like"> {{ article.likes.count }} 讚
                 </p>
                 <hr>
                 {% endfor %}

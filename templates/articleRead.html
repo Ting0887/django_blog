@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="{% static 'css/article.css' %}">
 <div class="container">
-    <h3 class="inlineBlock">{{ article.title }}</h3>
+    <h2 class="title">{{ article.title }}</h2>
         {% if user.is_superuser %}
             <a class="btn inlineBlock" href="{% url 'articleUpdate' article.id %}">修改</a>
         {% endif %}
@@ -14,7 +14,7 @@
             {{ article.content }}
         </div>
             <p class='like'>
-                <img id="like" src="{% static 'img/like.png' %}" alt="like">{{ article.likes.count }}
+                <img id="like" src="{% static 'img/like.png' %}" alt="like"> {{ article.likes.count }}
                 {% if user.is_authenticated %}
                     <a href="{% url 'articleLike' article.id %}">讚</a>
                 {% endif %}
@@ -22,7 +22,7 @@
         {% for comment in comments %}
             <div class="usercomment">
                 <span class="commentAuthor">
-                    {{ comment.user.fullName }}
+                    {{ comment.user }}
                 </span>
             {% if comment.user != user %}
                 <span class="comment">

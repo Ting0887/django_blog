@@ -10,7 +10,7 @@ h1{
 }
 
 ul#menu{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: right;
 }
 
@@ -35,6 +35,28 @@ ul#menu a:hover{
     text-decoration: none;
 }
 
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content a {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+
+.dropdown{
+    display: inline-block;
+  }
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
 p a.btn{
     height: 20px;
     width: 80px;
@@ -44,6 +66,7 @@ p a.btn{
 .btn{
     display: inline-block;
     color: black;
+    text-align: center;
     text-decoration: none;
     border: thin solid gray;
     height: 20px;
@@ -61,15 +84,13 @@ input[type=text]{
     padding: 1em 0 lem 3em;
 }
 .success{
-    background-color: darkgreen;
-    width: 250px;
+    color: darkgreen;
+    text-align: center;
+    list-style: none;
 }
 
 .error{
-    background-color:crimson;
-    width: 250px;
-}
-
-.inlineBlock{
-    display: block;
+    list-style: none;
+    text-align: center;
+    color: red;
 }

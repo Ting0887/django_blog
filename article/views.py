@@ -37,6 +37,7 @@ def articleRead(request, articleId):
     article = get_object_or_404(Article, id=articleId)
     context = {'article':article,
                 'comments':Comment.objects.filter(article=article)}
+    
     return render(request, 'articleRead.html', context)
 
 @admin_required
