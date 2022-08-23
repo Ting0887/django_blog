@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block heading %}403 error{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/status.css' %}">
+    <div class="status-error">
+        <p>{{ request.user.fullName }} 您沒有權限訪問此連結</p>
+    </div>
+{% endblock %}

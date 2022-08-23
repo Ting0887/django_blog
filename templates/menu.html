@@ -13,7 +13,7 @@
     </li>
     {% if user.is_authenticated %}
     <li>
-        <a>{{ user.username }}</a>
+        <a>{{ request.user.username }}</a>
         <ul>
             <li>
                 <a href="{% url 'account:profile' user.id %}">個人資料</a>

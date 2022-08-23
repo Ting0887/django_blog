@@ -3,7 +3,9 @@
 {% block heading %}個人資料{% endblock %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/information.css' %}">
-    <a class="btn" href="{% url 'account:profileUpdate' user.id %}">編輯</a>
+    {% if request.user.email == user.email %}
+        <a class="btn" href="{% url 'account:profileUpdate' user.id %}">編輯</a>
+    {% endif %}
     <div class="information">
         <table class="user">
             <tr>

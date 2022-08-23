@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
@@ -72,6 +72,10 @@ def profile(request, id):
 @login_required
 def profileUpdate(request, id):
     user = get_object_or_404(User, id=id)
+    # if user is not owner
+    if request.user.email != user.email:
+        msg_error = "您沒有權限訪問此連結"
+        return render(request, '403permission.html', {'user':user,'msg_error':msg_error})
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         print(form)

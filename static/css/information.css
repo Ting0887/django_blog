@@ -5,6 +5,7 @@ table{
     border: 1px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
 }
 
 table td{
@@ -16,9 +17,15 @@ table td{
     text-align: center;
     height: 20px;
     width: 50px;
-    padding: 0%;
+    margin-left: 50%;
+    margin-top: 20px;
 }
 
 .update input{
-    width: 300px;
+    display: block;
+    width: 450px;
+}
+
+.update{
+    margin-left: 35%;
 }

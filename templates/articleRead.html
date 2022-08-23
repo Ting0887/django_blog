@@ -10,7 +10,7 @@
         {% endif %}
             <p>發表時間 : {{ article.pubDateTime }}</p>
         <div class="articleContent">
-            {{ article.content }}
+            {{ article.content|linebreaks }}
         </div>
             <p class='like'>
                 <img id="like" src="{% static 'img/like.png' %}" alt="like"> {{ article.likes.count }}
