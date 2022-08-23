@@ -1,10 +1,4 @@
-.login{
-    width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.register{
+.login, .register, .reset-password{
     width: 350px;
     margin-left: auto;
     margin-right: auto;
@@ -19,4 +13,24 @@ p input{
     color: red;
     text-align: center;
     padding-left: 5px;
+}
+
+.login-btn, .register-btn, .reset-btn{
+    text-align: center;
+    margin-left: 40%;
+    height: 30px;
+    width: 50px;
+    text-decoration: none;
+    border: thin solid gray;
+    margin-left: 40%;
+}
+
+p .forgetpassword {
+    margin-left: 40%;
+}
+
+.forget-password-form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
 }

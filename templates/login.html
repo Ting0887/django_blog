@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block heading %}登入{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
 <div class="login">
     <form method='POST' action="{% url 'account:login' %}">
         {% csrf_token %}
@@ -9,7 +11,12 @@
         {% if nextURL %}
             <input type="hidden" name="nextURL" value="{{ nextURL }}"></input>
         {% endif %}
-        <p><input class="btn" type="submit" value="送出"></p>
+        <p>
+            <input class="login-btn" type="submit" value="送出">
+        </p>
+        <p>
+            <a class="forgetpassword" href="{% url 'account:accounts/forgetPassword' %}">忘記密碼</a>
+        </p>
     </form>
 </div>
 {% endblock %}

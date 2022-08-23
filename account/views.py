@@ -4,14 +4,19 @@ from email import message
 from functools import reduce
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.tokens import default_token_generator
 from django.urls.base import reverse
-from account.forms import UserForm, ProfileForm
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from account.forms import UserForm, ProfileForm, ForgetPasswordForm
 from account.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 # Create your views here.
 
@@ -62,6 +67,25 @@ def admin_required(func):
             return redirect(reverse('account:login') +  '?next=' + request.get_full_path())
         return func(request, *args, **kwargs)
     return auth
+
+def forgetPassword(request):
+    form = ForgetPasswordForm()
+    if request.method == 'POST':
+        form = ForgetPasswordForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data['email']
+            associated_users = User.objects.filter(email=data)
+            if associated_users.exists():
+                for user in associated_users:
+                    mailto = user.email
+                    mailsubject = 'Yukina的部落格 - 密碼重設通知'
+                    mailcontent = f"""{ user.fullName }您好,\n
+                                      您的密碼需要重新設定,\n
+                                      請點入此連結重設密碼 : http://127.0.0.1:8000/account/password-reset/{urlsafe_base64_encode(force_bytes(user.id))}/{default_token_generator.make_token(user)}"""                              
+                    email = EmailMessage(mailsubject, mailcontent, settings.EMAIL_HOST_USER, [mailto])
+                    email.fail_silently = False
+                    email.send()
+    return render(request, 'forgetPassword.html', {'form':form})
 
 @login_required
 def profile(request, id):
