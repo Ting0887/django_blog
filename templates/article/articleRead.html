@@ -6,9 +6,13 @@
 <div class="container">
     <h2 class="title">{{ article.title }}</h2>
         {% if user.is_superuser %}
+        <div class="update-article">
             <a class="btn inlineBlock" href="{% url 'articleUpdate' article.id %}">修改</a>
+        </div>
         {% endif %}
+        <div class="publishTime">
             <p>發表時間 : {{ article.pubDateTime }}</p>
+        </div>
         <div class="articleContent">
             {{ article.content|linebreaks }}
         </div>
@@ -46,9 +50,12 @@
         {% endfor %}
         {% if user.is_authenticated %}
         <br>
-        <form method='POST' action="{% url 'commentCreate' article.id %}">
+        <form class="leave-comment" method='POST' action="{% url 'commentCreate' article.id %}">
             {% csrf_token %}
-            <input type="text" name="comment" placeholder="留言...">
+            <div class="user">
+                {{ request.user.fullName }}
+            </div>
+            <textarea name="comment" placeholder="留言..."></textarea>
             <input class="btn" type="submit" value="送出">
         </form>
         <br>

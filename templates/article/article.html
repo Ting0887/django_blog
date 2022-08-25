@@ -17,15 +17,17 @@
         <div class="container">
             <div class="article">
                 <h2 class="title">
-                    <a href="{% url 'articleRead' article.id %}">{{ article.title }}</a>
+                    <a href="{% url 'articleRead' article.id %}">{{ article.title|linebreaks|truncatechars_html:30 }}</a>
                 </h2>
                 {% if user.is_superuser %}
-                    <form class="inlineBlock"  method="POST" action="{% url 'articleDelete' article.id %}">
+                    <form class="delete-article"  method="POST" action="{% url 'articleDelete' article.id %}">
                         {% csrf_token %}
                         <input class="btn deleteConfirm" type="submit" value="刪除">
                     </form>
                 {% endif %}
-                <p>發表時間 : {{ article.pubDateTime }}</p>
+                <div class="publishTime">
+                    <p>發表時間 : {{ article.pubDateTime }}</p>
+                </div>
                 <!-- 顯示文章前30字 -->
                 <div class="articleContent">
                     {{ article.content|linebreaks|truncatechars_html:30 }}

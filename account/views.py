@@ -22,11 +22,11 @@ from django.conf import settings
 
 def register(request):
     if request.method == 'GET':
-        return render(request, 'register.html', {'userForm':UserForm()})
+        return render(request, 'accounts/register.html', {'userForm':UserForm()})
     
     userForm = UserForm(request.POST)
     if not userForm.is_valid():
-        return render(request, 'register.html', {'userForm':userForm})
+        return render(request, 'accounts/register.html', {'userForm':userForm})
     
     userForm.save()
     messages.success(request, '歡迎註冊帳號')
@@ -34,18 +34,18 @@ def register(request):
 
 def login(request):
     if request.method == 'GET':
-        return render(request, 'login.html', {'nextURL':request.GET.get('next')})
+        return render(request, 'accounts/login.html', {'nextURL':request.GET.get('next')})
     username = request.POST.get('username')
     password = request.POST.get('password')
 
     if not username or not password:
         messages.error(request, '請輸入資料')
-        return render(request, 'login.html')
+        return render(request, 'accounts/login.html')
     
     user = authenticate(username=username, password=password)
     if not user:
         messages.error(request, '登入失敗，請再輸入一次')
-        return render(request, 'login.html')
+        return render(request, 'accounts/login.html')
     
     auth_login(request, user)
     nextURL = request.POST.get('nextURL')
@@ -85,13 +85,13 @@ def forgetPassword(request):
                     email = EmailMessage(mailsubject, mailcontent, settings.EMAIL_HOST_USER, [mailto])
                     email.fail_silently = False
                     email.send()
-    return render(request, 'forgetPassword.html', {'form':form})
+    return render(request, 'accounts/forgetPassword.html', {'form':form})
 
 @login_required
 def profile(request, id):
     user = get_object_or_404(User, id=id)
     if request.method == 'GET':
-        return render(request,'profile.html',{'user':user})
+        return render(request,'profile/profile.html',{'user':user})
 
 @login_required
 def profileUpdate(request, id):
@@ -116,4 +116,4 @@ def profileUpdate(request, id):
                          'website': user.website,
                          'address': user.address}
         form = ProfileForm(original_data)
-    return render(request,'profileUpdate.html',{'form':form,'user':user})
+    return render(request,'profile/profileUpdate.html',{'form':form,'user':user})

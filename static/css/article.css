@@ -1,7 +1,6 @@
 div.container{
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
 }
 
 .createArticle p{
@@ -17,16 +16,33 @@ div.container{
     text-decoration: underline;
 }
 
+.publishTime, .update-article{
+    margin-left: 25%;
+}
+
 .articleContent{
     background-color: darkorange;
     border: thin solid gray;
     border-radius: 10px;
-    width: 450px;
+    width: 750px;
+    margin-left: 25%;
 }
+
+.create-article{
+    text-align: center;
+}
+
+textarea{
+    width: 500px;
+    height: 330px;
+    resize: none;
+}
+
 
 .like{
     font-weight: bold;
     color: #3e7bd1;
+    margin-left: 25%;
 }
 
 img#like{
@@ -43,6 +59,7 @@ div.Allcomment{
 
 .usercomment, .commentAuthor{
     font-size: 0.7cm;
+    margin-left: 180px;
 }
 
 .commentAuthor{
@@ -59,4 +76,8 @@ div.Allcomment{
 
 .comment{
     font-size: 20px;
+}
+
+.leave-comment{
+    margin-left: 35%;
 }

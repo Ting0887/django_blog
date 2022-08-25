@@ -10,25 +10,25 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def main(request):
-    return render(request, 'main.html')
+    return render(request, 'home/main.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'home/about.html')
 
 def article(request):
     articles = {article:Comment.objects.filter(article=article) for article in Article.objects.all()}
     context = {'articles':articles}
     print(context)
-    return render(request, 'article.html', context)
+    return render(request, 'article/article.html', context)
 
 @admin_required
 def articleCreate(request):
     if request.method == 'GET':
-        return render(request, 'articleCreate.html', {'articleForm':ArticleForm()})
+        return render(request, 'article/articleCreate.html', {'articleForm':ArticleForm()})
     
     articleForm = ArticleForm(request.POST)
     if not articleForm.is_valid():
-        return render(request, 'articleCreate.html', {'articleForm':articleForm})
+        return render(request, 'article/articleCreate.html', {'articleForm':articleForm})
     articleForm.save()
     messages.success(request, '已新增文章')
     return redirect('/article/')
@@ -38,7 +38,7 @@ def articleRead(request, articleId):
     context = {'article':article,
                 'comments':Comment.objects.filter(article=article)}
     
-    return render(request, 'articleRead.html', context)
+    return render(request, 'article/articleRead.html', context)
 
 @admin_required
 def articleUpdate(request, articleId):
@@ -48,7 +48,7 @@ def articleUpdate(request, articleId):
         return render(request, 'articleUpdate.html', {'articleForm':articleForm})
     articleForm = ArticleForm(request.POST, instance=article)
     if not articleForm.is_valid():
-        return render(request, 'articleUpdate.html', {'articleForm':articleForm})
+        return render(request, 'article/articleUpdate.html', {'articleForm':articleForm})
     
     articleForm.save()
     messages.success(request, '文章已修改')
@@ -67,7 +67,7 @@ def articleSearch(request):
     searchTerm = request.GET.get('searchTerm')
     articles = Article.objects.filter(Q(title__icontains=searchTerm) | Q(content__icontains=searchTerm))
     context = {'articles':articles}
-    return render(request, 'ArticleSearch.html', context)    
+    return render(request, 'article/articleSearch.html', context)    
 
 @login_required
 def articleLike(request, articleId):

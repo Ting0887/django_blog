@@ -1,13 +1,20 @@
 .searchbar{
     margin-left: auto;
     margin-right: auto;
-    width: 235px;
+    width: 500px;
 }
 
 .Search-results{
     text-align: center;
     font-weight: bold;
     font-size: 20px;
+}
+
+
+.search-article{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }
 
 .table-hover tr:hover td a{

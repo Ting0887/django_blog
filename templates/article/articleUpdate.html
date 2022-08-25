@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/article.css' %}">
-{% endblock %}
 
 {% block heading %}
     {% if articleForm.instance.id %}    
@@ -11,16 +8,19 @@
         新增文章
     {% endif %}
 {% endblock %}
+
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/article.css' %}">
     {% if articleForm.instance.id %}
-        <form method="POST" action="{% url 'articleUpdate' articleForm.instance.id %}">
-        </form>
+    <div class="aupdate-article">
+        <form class="update-article" method="POST" action="{% url 'articleUpdate' articleForm.instance.id %}">
+    </div>
     {% else %}
-        <form method='POST', action="{% url 'articleCreate' %}">
-            {% csrf_token %}
+        <form class="create-article" method='POST', action="{% url 'articleCreate' %}">
+    {% endif %}
+           {% csrf_token %}
             {{ articleForm.as_p }}
             <input type="submit" value="送出">
             <a class="btn" href="{% url 'article' %}" >放棄</a>
         </form>
-    {% endif %}
 {% endblock %}
