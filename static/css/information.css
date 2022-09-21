@@ -13,12 +13,16 @@ table td{
     border: solid 1px;
 }
 
-.btn{
+.user-edit .edit-btn{
     text-align: center;
-    height: 20px;
-    width: 50px;
+    text-decoration: none;
+    height: 30px;
+    width: 40px;
     margin-left: 50%;
     margin-top: 20px;
+    color: black;
+    border: thin solid gray;
+    padding: 0%;
 }
 
 .update input{
@@ -28,4 +32,9 @@ table td{
 
 .update{
     margin-left: 35%;
+}
+
+.update-btn{
+    margin-left: 50%;
+    margin-top: 15px;
 }

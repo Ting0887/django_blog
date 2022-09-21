@@ -1,0 +1,6 @@
+<div class="searchbar">
+    <form class="search-article" action="{% url 'articleSearch' %}">
+        <input class="searchTerm" type="text" name="searchTerm" {% if SearchTerm %} value="{{ searchTerm }}" {% endif %}>
+        <button class="search-btn" type="submit" value="search">搜尋</button>
+    </form>
+</div>

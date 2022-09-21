@@ -1,0 +1,76 @@
+.dropdown-content{
+    display: none;
+    overflow: auto;
+    box-shadow:  rgba(0,0,0,0.2);
+}
+  
+.dropdown-content input{
+    padding: 5px 10px;
+    display: block;
+}
+
+.comment-delete{
+    height: 5px;
+}
+
+.comment-update{
+    width: 500px;
+    padding-left:300px;
+    margin-top: -5px;
+}
+
+#comment-modify{
+    padding-left: -150px;
+}
+  
+.show{
+    display:block;
+}
+
+.cancel-edit{
+    font-size: 15px;
+}
+
+#cancel-edit a{
+    text-decoration: none;
+}
+
+.cancel-edit a:hover{
+    color: aqua;
+}
+
+.confirm-edit, .cancel-edit{
+    display: inline-block;
+    margin-top: -300px;
+}
+
+.cancel-edit{
+    margin-left: -390px;
+}
+
+.confirm-edit .btn{
+    margin-left: -350px;
+}
+
+.comment{
+    width: 450px;
+    padding-left: 5px;
+}
+
+form.comment-update{
+    margin-left: 15%;
+    width: 20%;
+    float: left;
+}
+
+.commentUser{
+    float: left;
+}
+
+.yourcomment{
+    width: 400px;
+    margin-left: -475px;
+    padding-top: 5px;
+    word-wrap:break-word;
+    word-break: normal; 
+}

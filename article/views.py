@@ -45,7 +45,7 @@ def articleUpdate(request, articleId):
     article = get_object_or_404(Article, id=articleId)
     if request.method == 'GET':
         articleForm = ArticleForm(instance=article)
-        return render(request, 'articleUpdate.html', {'articleForm':articleForm})
+        return render(request, 'article/articleUpdate.html', {'articleForm':articleForm})
     articleForm = ArticleForm(request.POST, instance=article)
     if not articleForm.is_valid():
         return render(request, 'article/articleUpdate.html', {'articleForm':articleForm})
@@ -65,9 +65,13 @@ def articleDelete(request, articleId):
 
 def articleSearch(request):
     searchTerm = request.GET.get('searchTerm')
-    articles = Article.objects.filter(Q(title__icontains=searchTerm) | Q(content__icontains=searchTerm))
-    context = {'articles':articles}
-    return render(request, 'article/articleSearch.html', context)    
+    if searchTerm:
+        articles = Article.objects.filter(Q(title__icontains=searchTerm) | Q(content__icontains=searchTerm))
+        context = {'articles':articles}
+        return render(request, 'article/articleSearch.html', context)    
+    else:
+        msg = "請輸入關鍵字"
+        return render(request, 'article/articleSearch.html', {'msg':msg,'searchTerm':searchTerm})
 
 @login_required
 def articleLike(request, articleId):

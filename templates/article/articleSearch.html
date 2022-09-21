@@ -3,13 +3,19 @@
 {% block heading %}查詢結果{% endblock %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/search.css' %}">
-    {% include 'searchForm.html' %}
-    <hr>
-    {% if not articles %}
+    {% include 'article/searchForm.html' %}
+    <!--如果沒有輸入關鍵字-->
+    {% if searchTerm == '' %}
+        <div class="search-results">
+            <p>{{ msg }}</p>
+        </div>
+    <!--搜尋不到文章-->
+    {% elif not articles %}
     <div class="Search-results">
         <p>查無資料</p>
     </div>
-    {% else %}
+    <!--搜尋結果用table顯示-->
+    {% elif articles %}
         <table class="table-hover">
             <tr>
                 <th>標題</th>

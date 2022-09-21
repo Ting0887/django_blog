@@ -1,7 +1,3 @@
-div.container{
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .createArticle p{
     text-align: center;
@@ -16,7 +12,7 @@ div.container{
     text-decoration: underline;
 }
 
-.publishTime, .update-article{
+.publishTime{
     margin-left: 25%;
 }
 
@@ -28,16 +24,34 @@ div.container{
     margin-left: 25%;
 }
 
-.create-article{
+.create-article, .update-article{
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+}
+
+.edit-article{
+    display: inline-block;
+    color: black;
+    background-color: rgba(255, 248, 220, 0.998);
+    text-align: center;
+    text-decoration: none;
+    height: 20px;
+    width: 80px;
+    font-size: 15px;
+    border-radius: 15px;
 }
 
 textarea{
-    width: 500px;
+    width: 400px;
     height: 330px;
     resize: none;
 }
 
+input{
+    size: 200px;
+}
 
 .like{
     font-weight: bold;
@@ -51,30 +65,34 @@ img#like{
     height: 0.5cm;
 }
 
-div.Allcomment{
-    margin-left: auto;
-    margin-right: auto;
-    width: 350px;
-}
-
-.usercomment, .commentAuthor{
+.div-comment, .commentUser{
     font-size: 0.7cm;
     margin-left: 180px;
 }
 
-.commentAuthor{
+.commentUser{
     font-weight: bold;
     color: #186caf;
     font-size: 20px;
+}
+
+.commentUser a{
+    text-decoration: none;
+}
+
+.commentUser a:hover{
+    color: aqua;
 }
 
 .commentTime{
     font-weight: bold;
     font-size: 15px;
     color: rgb(57, 218, 32);
+    margin-left: 15%;
+    margin-top: 35px;
 }
 
-.comment{
+.comment, .yourcomment{
     font-size: 20px;
 }
 

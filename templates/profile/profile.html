@@ -3,9 +3,13 @@
 {% block heading %}個人資料{% endblock %}
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/information.css' %}">
+    <!--作用 : 只能編輯自己的個人資料-->
     {% if request.user.email == user.email %}
-        <a class="btn" href="{% url 'account:profileUpdate' user.id %}">編輯</a>
+    <div class="user-edit">
+        <button type="button" class="edit-btn" onclick="location.href='{% url 'account:profileUpdate' user.id %}'">編輯</button>
+    </div>
     {% endif %}
+    <!--使用者的資料-->
     <div class="information">
         <table class="user">
             <tr>
