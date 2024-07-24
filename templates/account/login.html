@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}使用者登入{% endblock %}
+{% block content %}
+    <h1>Ting0887的部落格網站</h1>
+        <div class="login-form">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-form">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="error">{{ form.email.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                <div class="input-form">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="error">{{ form.password.errors.0 }}</div>
+                    {% endif %}
+                </div>
+                {% if form.non_field_errors %}
+                    <div class="form-group">
+                        {% for error in form.non_field_errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="login-btn">
+                    <button type="submit">登入</button>
+                </div>
+                <div class="forget-btn">
+                    <a href="" class="forget-password">忘記密碼?</a>
+                </div>
+                <div class="register-btn">
+                    <a href="" class="register-account">註冊帳號</a>
+                </div>
+            </form>
+        </div>
+{% endblock %}

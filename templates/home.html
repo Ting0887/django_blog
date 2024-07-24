@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}Ting0887的部落格{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+<div class="logout-btn">
+    <div id="menu-item" class="dropdown">
+        <a href="" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">
+            {{ request.user.username }}
+        </a>
+        <div class="dropdown-content">
+            <ul role="menu" class="dropdown-menu">
+                <li id="logout" class="menu-item"><a title="Logout" href="{% url 'Logout' %}">登出</a></li>
+                <li id="reset-pwd" class="menu-item"><a title="Reset-pwd" href="">更新密碼</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="login-btn">
+    <a class="login-btn" href="{% url 'Login' %}" title="Login">登入</a>
+</div>
+{% endif %}
+    <h1>Ting0887的部落格網站</h1>
+    {% if user.is_staff %}
+        <div class="create_article">
+            <a href="{% url 'Create_Article' %}">
+                <button>建立文章</button>
+            </a>
+        </div>
+    {% endif %}
+    <div class="display-article">
+        {% for article in articles %}
+        <div class="article-card" id="{{ article.article_id }}">
+            <form action="{% url 'Delete_Article' articleid=article.article_id %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="title">
+                    <a href="{% url 'Article_Detail' articleid=article.article_id %}">
+                        {{ article.title }}
+                    </a>
+                </div>
+                <div class="content">
+                    {{ article.content|slice:":50" }}...
+                </div>
+                {% if user.is_staff %}
+                    <button class="del-button" type="submit">刪除文章</button>
+                {% endif %}
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

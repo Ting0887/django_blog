@@ -1,0 +1,72 @@
+h1{
+    text-align: center;
+}
+
+a.login-btn{
+    float: right;
+}
+
+div.login-btn{
+    padding:5px;
+}
+
+.display-article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.article-card {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+.article-card .article-content {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.create_article button{
+    display: block;
+    width: 100px; 
+    margin: 0 auto;
+    font-weight: bold; 
+}
+
+.create_article a{
+    text-decoration: none;
+}
+
+.create-article-form{
+    display: block;
+    width: 400px; 
+    margin: 0 auto;
+}
+
+.article-title,.article-content{
+    padding-top: 5px;
+    width: 100%;
+}
+
+input[type="text"]{
+    width: 100%;
+}
+
+textarea{
+    width: 400px;
+    height: 250px;
+}
+
+.article-publish button{
+    display: block;
+    width: 50px; 
+    margin: 0 auto;
+    font-weight: bold; 
+}

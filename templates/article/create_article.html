@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}建立文章{% endblock %}
+{% block content %}
+    <h1>建立文章</h1>
+    <div class="create-article-form">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <div class="article-title">
+                <label for="title" name="title">文章標題:</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="article-content">
+                <label for="content" name="content">文章內容:</label>
+                <textarea id="content" value="輸入文章內容" name="content"></textarea>
+            </div>
+            <div class="article-publish">
+                <button type="submit">發佈</button>
+            </div>
+        </form>
+        {% if message %}
+            <script type="text/javascript">
+                alert('{{ message }}');
+            </script>
+        {% endif %}
+    </div>
+{% endblock %}

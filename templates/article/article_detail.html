@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}  
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <div class="display-article">
+        <div class="article-card">
+            <div class="article-title">
+                {{ article.title }}
+             </div>
+             <div class="article-content">
+                 {{ article.content }}
+             </div>
+             <div class="home">
+                <a href="{% url 'Home' %}">
+                    <button>回首頁</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
