@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 import re
+from article.models import PostComment
 
 class LoginForm(forms.Form):
     email = forms.CharField(
@@ -29,3 +30,14 @@ class LoginForm(forms.Form):
             if not user:
                 raise forms.ValidationError("密碼不正確")
         return password
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = PostComment
+        fields = ['comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'placeholder': '留言...', 'rows': 3}),
+        }
+        labels = {
+            'comment': '留言',
+        }
