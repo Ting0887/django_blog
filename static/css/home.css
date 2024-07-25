@@ -1,0 +1,11 @@
+a.home:link {
+    text-decoration: none;
+}
+a.home:visited {
+    background-color: transparent;
+    text-decoration: none;
+  }
+a.home:hover {
+    color: rgb(0, 255, 251);
+    background-color: transparent;
+  }

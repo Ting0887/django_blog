@@ -20,7 +20,9 @@
     <a class="login-btn" href="{% url 'Login' %}" title="Login">登入</a>
 </div>
 {% endif %}
-    <h1>Ting0887的部落格網站</h1>
+    <a class="home" href="{% url 'Home' %}">
+        <h1>Ting0887的部落格網站</h1>
+    </a>
     {% if user.is_staff %}
         <div class="create_article">
             <a href="{% url 'Create_Article' %}">

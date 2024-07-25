@@ -1,0 +1,18 @@
+.comment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.reply {
+    margin-left: 20px;  /* Indent replies */
+    border-left: 2px solid #007bff;
+    padding-left: 10px;
+    background: #e9ecef;
+}
+
+.replies {
+    margin-top: 10px;
+}

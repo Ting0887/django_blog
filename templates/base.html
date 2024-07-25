@@ -2,8 +2,11 @@
 <html>
     <head>
         {% load static %}
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
         <link rel="stylesheet" href="{% static 'css/article.css' %}">
         <link rel="stylesheet" href="{% static 'css/userform.css' %}">
+        <link rel="stylesheet" href="{% static 'css/comment.css' %}">
+        <link rel="icon" href="{% static 'img/blog_icon.jpg' %}" type="image/x-icon" />
         <meta charset="UTF-8">
             <title>
                 {% block title %}標題{% endblock %}

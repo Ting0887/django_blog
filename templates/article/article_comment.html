@@ -1,0 +1,39 @@
+{% load static %}
+<script src="{% static 'js/comment.js' %}"></script>
+
+<div id="comments-section">
+    {% for comment in comments %}
+        <div class="comment" id="comment-{{ comment.id }}">
+            <p><strong>{{ comment.user }}</strong> : {{ comment.comment }}</p>
+            <p class="timestamp">{{ comment.timestamp|date:"Y/m/d H:i" }}</p>
+            <a href="#" class="reply-link" data-comment-id="{{ comment.id }}">回復</a>
+            
+            <!-- Reply form for this comment -->
+            <div class="reply-form" id="reply-form-{{ comment.id }}" style="display:none;">
+                <form method="POST" action="{% url 'Article_Detail' articleid=article.article_id %}">
+                    {% csrf_token %}
+                    <label for="{{ form.comment.id_for_label }}">留言:</label>
+                    <input type="hidden" name="parent_comment_id" value="{{ comment.id }}">
+                    <button type="submit">送出</button>
+                </form>
+            </div>
+
+            {% if comment.replies.exists %}
+                <div class="replies">
+                    {% for reply in comment.replies.all %}
+                        <div class="reply">
+                            <p><strong>{{ reply.user }}</strong> : {{ reply.comment }}</p>
+                            <p class="timestamp">{{ reply.timestamp|date:"Y/m/d H:i" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+<h2>新增留言</h2>
+<form action="{% url 'Article_Detail' articleid=article.article_id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">送出</button>
+</form>
