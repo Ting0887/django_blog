@@ -4,9 +4,9 @@
 {% endblock %}  
 
 {% block content %}
-    <a class="home" href="{% url 'Home' %}">
-        <h1>Ting0887的部落格網站</h1>
-    </a>
+    <h1>
+        <a class="home" href="{% url 'Home' %}">Ting0887的部落格網站</a>
+    </h1>
     <div class="display-article">
         <div class="article-card">
             <div class="article-title">
@@ -18,9 +18,4 @@
         </div>
     </div>
     {% include 'article/article_comment.html' %}
-    <div class="home">
-        <a href="{% url 'Home' %}">
-            <button>回首頁</button>
-        </a>
-    </div>
 {% endblock %}

@@ -5,7 +5,9 @@
 <div class="logout-btn">
     <div id="menu-item" class="dropdown">
         <a href="" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true">
-            {{ request.user.username }}
+            <div class="login-user">
+                {{ request.user.username }}
+            </div>
         </a>
         <div class="dropdown-content">
             <ul role="menu" class="dropdown-menu">
@@ -20,9 +22,9 @@
     <a class="login-btn" href="{% url 'Login' %}" title="Login">登入</a>
 </div>
 {% endif %}
-    <a class="home" href="{% url 'Home' %}">
-        <h1>Ting0887的部落格網站</h1>
-    </a>
+        <h1>
+            <a class="home" href="{% url 'Home' %}">Ting0887的部落格網站</a>
+        </h1>
     {% if user.is_staff %}
         <div class="create_article">
             <a href="{% url 'Create_Article' %}">
